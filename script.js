@@ -3,9 +3,20 @@ getSumBtn.append("Get Total Price");
 document.body.appendChild(getSumBtn);
 
 const getSum = () => {
-//Add your code here
-  
+  const prices = document.querySelectorAll(".prices");
+  let total = 0;
+
+  prices.forEach(price => {
+    total += parseFloat(price.textContent);
+  });
+
+  const table = document.querySelector("table");
+  const newRow = document.createElement("tr");
+  const totalCell = document.createElement("td");
+  totalCell.colSpan = 2;
+  totalCell.textContent = "Total Price: " + total;
+  newRow.appendChild(totalCell);
+  table.appendChild(newRow);
 };
 
 getSumBtn.addEventListener("click", getSum);
-
